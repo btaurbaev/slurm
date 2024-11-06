@@ -1,0 +1,12 @@
+[Unit]
+Description={{ description | default("Semaphore Ansible UI") }}
+After={{ after | default("network.target") }}
+
+[Service]
+ExecStart={{ exec_start | default("/usr/bin/semaphore server --config /etc/semaphore/semaphore_config.json") }}
+Restart={{ restart | default("always") }}
+User={{ user | default("semaphore") }}
+Group={{ group | default("semaphore") }}
+
+[Install]
+WantedBy={{ wanted_by | default("multi-user.target") }}
